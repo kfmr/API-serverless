@@ -1,0 +1,35 @@
+service: cadastro
+#plugins
+plugins:
+  - serverless-offline
+  
+frameworkVersion: '2 || 3'
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  getBooks:
+  # handler funcao a ser executada
+    handler: handler.getBooks
+    # métodos da api, endpoints e eventos
+    events:
+      -http
+      #endpoint
+        path: books
+        # método http
+        method: get
+
+  getBook:
+  # handler funcao a ser executada
+    handler: handler.getBook
+    # métodos da api, endpoints e eventos
+    events:
+      -http
+      #endpoint
+        path: books{id}
+        # método http
+        method: get
